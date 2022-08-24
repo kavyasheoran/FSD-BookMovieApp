@@ -36,9 +36,9 @@ const Header = (props) => {
 
     const[firstnameRequired, setFirstnameRequired] = useState("dispNone");
     const[firstname, setFirstname]=useState( "");
-    const[lastnameRequired, setLastnameRequired]=useState( "dispNone");
+    const[lastnameRequired, setLastnameRequired]=useState("dispNone");
     const[lastname, setLastname]=useState("");
-    const[emailRequired, setEmailRequired]=useState( "dispNone");
+    const[emailRequired, setEmailRequired]=useState("dispNone");
     const[email, setEmail]=useState( "");
     const[registerPasswordRequired, setRegisterPasswordRequired]=useState( "dispNone");
     const[registerPassword, setRegisterPassword]=useState( "");
@@ -119,6 +119,10 @@ const Header = (props) => {
         email === "" ? setEmailRequired("dispBlock") : setEmailRequired("dispNone");
         registerPassword === "" ? setRegisterPasswordRequired("dispBlock") : setRegisterPasswordRequired("dispNone");
         contact === "" ? setContactRequired("dispBlock") : setContactRequired("dispNone");
+
+        if (email === "" || firstname === "" || lastname === "" || contact === "" || registerPassword === "") {
+            return; 
+        }
 
         let dataSignup = JSON.stringify({
             "first_name": firstname,
